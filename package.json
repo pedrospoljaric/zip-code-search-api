@@ -26,7 +26,12 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
+    "kcors": "^2.2.2",
     "knex": "^0.95.14",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.1.0",
+    "koa-respond": "^2.1.0",
     "pg": "^8.7.1"
   }
 }
