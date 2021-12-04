@@ -7,8 +7,8 @@ module.exports = async (ctx, next) => {
 
     try {
         ctx.user = verifyTokenAndGetData(token)
-        await next()
     } catch (error) {
         throw customError('User not authorized', 401)
     }
+    await next()
 }
