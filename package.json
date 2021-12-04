@@ -34,6 +34,7 @@
         "koa-bodyparser": "^4.3.0",
         "koa-compress": "^5.1.0",
         "koa-respond": "^2.1.0",
+        "lodash": "^4.17.21",
         "pg": "^8.7.1"
     }
 }
