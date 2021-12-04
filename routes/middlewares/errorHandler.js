@@ -4,8 +4,13 @@ module.exports = async (ctx, next) => {
     try {
         await next()
     } catch (error) {
-        ctx.send(prop('status', error), {
-            message: prop('message', error)
+        const status = prop('status', error) || 500
+        ctx.send(status, {
+            success: false,
+            error: {
+                status,
+                message: prop('message', error)
+            }
         })
     }
 }

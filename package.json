@@ -19,7 +19,8 @@
         "eslint": "^8.3.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-plugin-import": "^2.25.3",
-        "jest": "^27.4.3"
+        "jest": "^27.4.3",
+        "supertest": "^6.1.6"
     },
     "config": {
         "commitizen": {
