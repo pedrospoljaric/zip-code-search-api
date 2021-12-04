@@ -1,10 +1,11 @@
 const Router = require('koa-router')
-const { errorHandler } = require('./middlewares')
+const { errorHandler, checkAuthorization } = require('./middlewares')
 const addresses = require('./addresses')
 const authentication = require('./authentication')
 
 module.exports = new Router()
     .use(errorHandler)
     .use('/authentication', authentication)
+    .use(checkAuthorization)
     .use('/addresses', addresses)
     .routes()
