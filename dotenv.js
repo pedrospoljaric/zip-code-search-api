@@ -1,6 +1,6 @@
 module.exports = {
     config() {
-        if (process.env.NODE_ENV) return
+        if (process.env.PORT) return
         try {
             // eslint-disable-next-line global-require
             require('dotenv').config({ path: `${__dirname}/.env` })
