@@ -1,14 +1,11 @@
 const Router = require('koa-router')
-const yamljs = require('yamljs')
-const { koaSwagger } = require('koa2-swagger-ui')
 const { errorHandler, checkAuthorization } = require('./middlewares')
 const addresses = require('./addresses')
 const authentication = require('./authentication')
-
-const spec = yamljs.load(`${__dirname}/swagger.yaml`)
+const docs = require('./docs')
 
 module.exports = new Router()
-    .get('/docs', koaSwagger({ routePrefix: false, swaggerOptions: { spec } }))
+    .use('/docs', docs)
     .use(errorHandler)
     .use('/authentication', authentication)
     .use(checkAuthorization)

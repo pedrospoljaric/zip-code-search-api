@@ -1,5 +1,5 @@
-version: "3.8"
-services: 
+version: "3.3"
+services:
   postgres:
     image: postgres:latest
     environment:
@@ -11,3 +11,28 @@ services:
     restart: on-failure
     networks:
       - internal
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    working_dir: "/usr/api"
+    ports:
+      - 1234:1234
+    volumes:
+      - ./:/usr/api
+      - /usr/api/node_modules
+    restart: on-failure
+    environment:
+      PORT: 1234
+      DB_HOST: postgres
+      DB_NAME: shipping
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      JWT_PASSWORD: supersecret
+      NODE_ENV: development
+    networks:
+      - internal
+networks:
+  internal: null
