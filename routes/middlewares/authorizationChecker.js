@@ -6,7 +6,8 @@ module.exports = async (ctx, next) => {
     const token = (prop('headers.authorization', ctx) || '').split(' ')[1]
 
     try {
-        ctx.user = verifyTokenAndGetData(token)
+        const tokenData = verifyTokenAndGetData(token)
+        ctx.user = { id: prop('id', tokenData) }
     } catch (error) {
         throw customError('User not authorized', 401)
     }

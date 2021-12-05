@@ -1,7 +1,9 @@
 const errorHandler = require('./errorHandler')
-const checkAuthorization = require('./checkAuthorization')
+const authorizationChecker = require('./authorizationChecker')
+const accessLogger = require('./accessLogger')
 
 module.exports = {
     errorHandler,
-    checkAuthorization
+    authorizationChecker,
+    accessLogger
 }
