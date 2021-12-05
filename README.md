@@ -9,6 +9,7 @@ A organização do projeto segue como base uma estrutura de pastas com **domains
 Seguindo esse modelo como base para a estrutura, o projeto também possui as seguintes principais pastas:
 - **database**: Contém os arquivos relacionados à configuração da conexão com o banco de dados, assim como as migrations criadas. Isso é feito utilizando a biblioteca `knex` para realizar a conexão com um banco de dados em `PostgreSQL`, que está configurado como um container `Docker` em "docker-compose.yml", mas também pode ser conectado à uma instância local do SGBD.
 - **models**: contém métodos responsáveis por executar queries no banco de dados. Funciona como uma interface entre os métodos da pasta "domains" e o banco. O isolamento desses métodos facilita a criação de mocks para testes.
+- **services**: contém configurações e wrappers para serviços e bibliotecas utilizados que não estão diretamente ligados a nenhum domínio da aplicação, como `winston`, que foi utilizado para a criação de logs estruturados, e `redis`, que foi utilizado para o armazenamento de cache visando otimizar o tempo de resposta e reduzir a carga no banco de dados.
 - **tests**: contém todos os arquivos de teste criados, divididos entre testes de integração e unitários por pastas. Todos os testes foram feitos utilizando a biblioteca `jest` e os testes de integração também utilizam a biblioteca `supertest`
 - **utils**: contém arquivos com métodos genéricos agnósticos às regras de negócio.
 
