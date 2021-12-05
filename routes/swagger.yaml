@@ -1,21 +1,39 @@
 openapi: 3.0.0
 info:
-  title: Swagger Example
-  description: This is an example Koa API.
+  title: Zip Code Search API
+  description: API to search for addresses by their zip codes.
   version: 1.0.0
-
-servers:
-  - url: /api/v1
 
 components:
   securitySchemes:
-    bearerAuth:
+    Bearer token:
       type: http
       scheme: bearer
       bearerFormat: JWT
 
 paths:
-  /authentication/authenticate:
+  /healthcheck:
+    get:
+      summary: Checks if the API is running.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      example: ok
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema: 
+                type: string
+                example: Not Found
+  /api/v1/authentication/authenticate:
     post:
       summary: Authenticates a user.
       description: Returns a JSON Web Token to be used as authorization.
@@ -35,80 +53,80 @@ paths:
         '200':
           description: OK
           content:
-              application/json:
-                schema: 
-                    type: object
-                    properties:
-                      success:
-                        type: boolean
-                        example: true
-                      data:
-                        type: object
-                        properties:
-                          token:
-                            type: string
-                            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzg2NDM1MjZ9.-ORxTZiLtoxLl66RuItYhMzKRIK4TnZ4Ujl8iErcXp0
+            application/json:
+              schema: 
+                  type: object
+                  properties:
+                    success:
+                      type: boolean
+                      example: true
+                    data:
+                      type: object
+                      properties:
+                        token:
+                          type: string
+                          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzg2NDM1MjZ9.-ORxTZiLtoxLl66RuItYhMzKRIK4TnZ4Ujl8iErcXp0
         '400':
           description: Bad Request
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: false
-                      error:
-                        type: object
-                        properties:
-                          status:
-                            type: integer
-                            example: 400
-                          message:
-                            type: string
-                            example: Credentials not provided
+                      status:
+                        type: integer
+                        example: 400
+                      message:
+                        type: string
+                        example: Credentials not provided
         '401':
           description: Unauthorized
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: false
-                      error:
-                        type: object
-                        properties:
-                          status:
-                            type: integer
-                            example: 401
-                          message:
-                            type: string
-                            example: Invalid credentials
+                      status:
+                        type: integer
+                        example: 401
+                      message:
+                        type: string
+                        example: Invalid credentials
         '404':
           description: Not Found
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: false
-                      error:
-                        type: object
-                        properties:
-                          status:
-                            type: integer
-                            example: 404
-                          message:
-                            type: string
-                            example: User not found
-  /addresses:
+                      status:
+                        type: integer
+                        example: 404
+                      message:
+                        type: string
+                        example: User not found
+  /api/v1/addresses:
     get:
       security:
-        - bearerAuth: []
+        - Bearer token: []
       summary: Returns an address object.
       description: Returns the address of the provided zip code.
       parameters:
@@ -119,85 +137,85 @@ paths:
         '200':
           description: OK
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: true
-                      data:
-                        type: object
-                        properties:
-                          zip_code:
-                            type: integer
-                            example: 12210130
-                          location:
-                            type: string
-                            example: Av. Dr. João Guilhermino
-                          district:
-                            type: string
-                            example: Centro
-                          city:
-                            type: string
-                            example: São José dos Campos
-                          state:
-                            type: string
-                            example: São Paulo
+                      zip_code:
+                        type: integer
+                        example: 12210130
+                      location:
+                        type: string
+                        example: Av. Dr. João Guilhermino
+                      district:
+                        type: string
+                        example: Centro
+                      city:
+                        type: string
+                        example: São José dos Campos
+                      state:
+                        type: string
+                        example: São Paulo
         '400':
           description: Bad Request
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: false
-                      error:
-                        type: object
-                        properties:
-                          status:
-                            type: integer
-                            example: 400
-                          message:
-                            type: string
-                            example: Invalid zip code
+                      status:
+                        type: integer
+                        example: 400
+                      message:
+                        type: string
+                        example: Invalid zip code
         '401':
           description: Unauthorized
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: false
-                      error:
-                        type: object
-                        properties:
-                          status:
-                            type: integer
-                            example: 401
-                          message:
-                            type: string
-                            example: User not authorized
+                      status:
+                        type: integer
+                        example: 401
+                      message:
+                        type: string
+                        example: User not authorized
         '404':
           description: Not Found
           content:
-              application/json:
-                schema: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
                     type: object
                     properties:
-                      success:
-                        type: boolean
-                        example: false
-                      error:
-                        type: object
-                        properties:
-                          status:
-                            type: integer
-                            example: 404
-                          message:
-                            type: string
-                            example: Address of zip code 12210144 not found
+                      status:
+                        type: integer
+                        example: 404
+                      message:
+                        type: string
+                        example: Address of zip code 12210144 not found

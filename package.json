@@ -26,6 +26,7 @@
         }
     },
     "dependencies": {
+        "@godaddy/terminus": "^4.9.0",
         "argon2": "^0.28.3",
         "dotenv": "^10.0.0",
         "jsonwebtoken": "^8.5.1",
