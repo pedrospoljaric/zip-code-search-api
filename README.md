@@ -19,18 +19,31 @@ Também foram utilizadas as bibliotecas `ESLint` com os padrões AirBnb e divers
 
 Com relação a versionamento de código com git, foi utilizada a ferramenta `commitzen` para padronização dos commits e `git flow` para padronização das branches. O GitHub foi utilizado como plataforma de hospedagem, onde foi configurado um workflow para execução dos testes nos Pull Requests como parte de do processo de CI.
 
-## Para testar a aplicação:
+---
 
-1. Com o Docker instalado, iniciar todos os containers usando o seguinte comando na pasta raíz:
+## **Para iniciar a aplicação**
+
+Com o Docker instalado, iniciar todos os containers usando o seguinte comando na pasta raíz:
 ```sh
 docker-compose up -d
 ```
 
-2. Acessar http://localhost:1234/api/v1/docs usando um navegador e enviar requisições para as rotas.
+## **Para executar os testes**
+```sh
+docker-compose exec api npm test
+```
 
-Observações:
-- As credenciais do usuário de exemplo inserido são:
-  - username: TesteLuizaLabs
+## **Para usar a API**
+Acessar http://localhost:1234/api/v1/docs usando um navegador web e enviar requisições.
+
+As credenciais do usuário de exemplo inserido são:
+  - username: UsuarioTeste
   - password: P@ssw0rd
-- O endereço de CEP 12210130 também foi inserido como exemplo.
-  - Todos os endpoints relacionados a endereços necessitam de autorização.
+
+O endereço de CEP 12210130 também foi inserido como exemplo.\
+Observação: Todos os endpoints relacionados a endereços necessitam de autorização.
+
+## **Para acompanhar os logs**
+```sh
+docker-compose logs -f api
+```

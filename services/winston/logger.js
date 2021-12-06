@@ -1,7 +1,7 @@
 const { createLogger, format, transports } = require('winston')
 
 const logger = createLogger({
-    level: 'debug',
+    level: process.env.NODE_ENV === 'test' ? 'info' : 'debug',
     format: format.combine(
         format.colorize(),
         format.timestamp(),
