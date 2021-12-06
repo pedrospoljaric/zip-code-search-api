@@ -1,5 +1,7 @@
 # Zip Code Search API
 
+## Descrição
+
 A API foi desenvolvida usando `Node.js` devido à familiaridade com essa tecnologia.\
 A organização do projeto segue como base uma estrutura de pastas com **domains**, **controllers** e **routes**, dessa forma:
 - **domains**: contém os arquivos com os métodos de manipulação dos dados de acordo com as regras de negócio. Cada arquivo possui um único método para manter a organização e facilitar a criação de testes unitários, e os arquivos são organizados em pastas chamadas de "domínios", por exemplo, "usuários" e "endereços".
@@ -16,3 +18,19 @@ Seguindo esse modelo como base para a estrutura, o projeto também possui as seg
 Também foram utilizadas as bibliotecas `ESLint` com os padrões AirBnb e diversas funções do `Lodash` em muitos pontos da aplicação.
 
 Com relação a versionamento de código com git, foi utilizada a ferramenta `commitzen` para padronização dos commits e `git flow` para padronização das branches. O GitHub foi utilizado como plataforma de hospedagem, onde foi configurado um workflow para execução dos testes nos Pull Requests como parte de do processo de CI.
+
+## Para testar a aplicação:
+
+1. Com o Docker instalado, iniciar todos os containers usando o seguinte comando na pasta raíz:
+```sh
+docker-compose up -d
+```
+
+2. Acessar http://localhost:1234/api/v1/docs usando um navegador e enviar requisições para as rotas.
+
+Observações:
+- As credenciais do usuário de exemplo inserido são:
+  - username: TesteLuizaLabs
+  - password: P@ssw0rd
+- O endereço de CEP 12210130 também foi inserido como exemplo.
+  - Todos os endpoints relacionados a endereços necessitam de autorização.

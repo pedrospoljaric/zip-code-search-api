@@ -39,6 +39,7 @@ services:
       DB_PASSWORD: postgres
       JWT_PASSWORD: supersecret
       NODE_ENV: development
+      REDIS_CONNECTION_STRING: redis://redis:6379
     networks:
       - internal
 networks:
