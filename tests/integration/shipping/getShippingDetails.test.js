@@ -4,7 +4,6 @@ const { customError } = require('../../../utils')
 
 jest.resetModules()
 jest.doMock('../../../services/correios/calculateShippingFeeAndDeliveryTIme', () => (sourceZipCode, destinationZipCode) => {
-    console.log('oi', sourceZipCode === process.env.SOURCE_ZIP_CODE && destinationZipCode === '12210130')
     if (sourceZipCode === process.env.SOURCE_ZIP_CODE && destinationZipCode === '12210130') {
         return {
             shippingFee: 22.50,

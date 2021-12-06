@@ -26,13 +26,13 @@ services:
       - redis
     working_dir: "/usr/api"
     ports:
-      - 12345:12345
+      - 1234:1234
     volumes:
       - ./:/usr/api
       - /usr/api/node_modules
     restart: on-failure
     environment:
-      PORT: 12345
+      PORT: 1234
       DB_HOST: postgres
       DB_NAME: shipping
       DB_USER: postgres
