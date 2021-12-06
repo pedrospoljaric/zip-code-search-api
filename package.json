@@ -30,6 +30,7 @@
         "@keyv/redis": "^2.2.1",
         "argon2": "^0.28.3",
         "dotenv": "^10.0.0",
+        "frete": "^0.3.2",
         "jsonwebtoken": "^8.5.1",
         "kcors": "^2.2.2",
         "keyv": "^4.0.4",
