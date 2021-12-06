@@ -223,3 +223,95 @@ paths:
                       message:
                         type: string
                         example: Address of zip code 12210144 not found
+  /api/v1/shipping:
+    get:
+      security:
+        - Bearer token: []
+      summary: Returns shipping details object.
+      description: Returns the shipping details for the provided zip code.
+      parameters:
+        - name: zipCode
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      shippingDetails:
+                        type: object
+                        properties:
+                          shippingFee:
+                            type: float
+                            example: 23.08
+                          deliveryTime:
+                            type: integer
+                            example: 1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 400
+                      message:
+                        type: string
+                        example: Invalid zip code
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 401
+                      message:
+                        type: string
+                        example: User not authorized
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                        example: 503
+                      message:
+                        type: string
+                        example: Could not retrieve shipping price and delivery time
