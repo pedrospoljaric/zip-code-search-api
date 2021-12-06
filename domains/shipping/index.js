@@ -1,4 +1,4 @@
-const getShippingDetails = require(',/getShippingDetails')
+const getShippingDetails = require('./getShippingDetails')
 
 module.exports = {
     getShippingDetails

@@ -20,8 +20,8 @@ module.exports = async (sourceZipCode, destinationZipCode) => {
         }).precoPrazo()
 
         return {
-            shippingFee: Number((prop('valor', response) || '').replace(',', '.')),
-            deliveryTime: Number(prop('prazoEntrega', response))
+            shippingFee: Number((prop('0.valor', response) || '').replace(',', '.')),
+            deliveryTime: Number(prop('0.prazoEntrega', response))
         }
     } catch (err) {
         throw customError('Could not retrieve shipping price and delivery time', 503)

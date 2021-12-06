@@ -14,8 +14,11 @@ const insertExampleData = async () => {
             city: 'São José dos Campos',
             state: 'São Paulo'
         })
+
+        db.destroy()
     } catch (err) {
         // supress - already inserted
+        db.destroy()
     }
 }
 
