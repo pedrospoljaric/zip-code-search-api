@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const verifyTokenAndGetData = require('../../../../utils/jsonwebtoken/verifyTokenAndGetData')
+const verifyTokenAndGetData = require('../../../../services/jsonwebtoken/verifyTokenAndGetData')
 
 it('Should return token data based on the token and environment password', () => {
     expect(verifyTokenAndGetData(jwt.sign({ id: 3 }, process.env.JWT_PASSWORD))).toMatchObject({ id: 3 })

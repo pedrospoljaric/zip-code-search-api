@@ -3,7 +3,7 @@ const { prop } = require('lodash/fp')
 const db = require('../../database')
 const { findUserByUsername } = require('../../models/users')
 const { customError } = require('../../utils')
-const createToken = require('../../utils/jsonwebtoken/createToken')
+const createToken = require('../../services/jsonwebtoken/createToken')
 
 module.exports = async ({ username, password } = {}) => {
     if (!username || !password) throw customError('Credentials not provided', 400)

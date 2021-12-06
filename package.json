@@ -27,10 +27,12 @@
     },
     "dependencies": {
         "@godaddy/terminus": "^4.9.0",
+        "@keyv/redis": "^2.2.1",
         "argon2": "^0.28.3",
         "dotenv": "^10.0.0",
         "jsonwebtoken": "^8.5.1",
         "kcors": "^2.2.2",
+        "keyv": "^4.0.4",
         "knex": "^0.95.14",
         "koa": "^2.13.4",
         "koa-bodyparser": "^4.3.0",

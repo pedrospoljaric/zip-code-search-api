@@ -1,5 +1,5 @@
 const { prop } = require('lodash/fp')
-const { verifyTokenAndGetData } = require('../../utils/jsonwebtoken')
+const { verifyTokenAndGetData } = require('../../services/jsonwebtoken')
 const { customError } = require('../../utils')
 
 module.exports = async (ctx, next) => {

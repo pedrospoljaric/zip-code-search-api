@@ -11,12 +11,19 @@ services:
     restart: on-failure
     networks:
       - internal
+  redis:
+    image: redis:6.2.6
+    ports:
+      - 6379:6379
+    networks:
+      - internal
   api:
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
       - postgres
+      - redis
     working_dir: "/usr/api"
     ports:
       - 1234:1234

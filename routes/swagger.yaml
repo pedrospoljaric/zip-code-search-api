@@ -45,9 +45,11 @@ paths:
               properties:
                 username:
                   type: string
+                  required: true
                   example: test
                 password:
                   type: string
+                  required: true
                   example: password
       responses:
         '200':
@@ -131,6 +133,8 @@ paths:
       description: Returns the address of the provided zip code.
       parameters:
         - name: zipCode
+          in: query
+          required: true
           schema:
             type: integer
       responses:
