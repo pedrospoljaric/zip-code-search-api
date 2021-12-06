@@ -2,11 +2,11 @@ const frete = require('frete')
 const { prop } = require('lodash/fp')
 const { customError } = require('../../utils')
 
-module.exports = async (sourceZipCode, targetZipCode) => {
+module.exports = async (sourceZipCode, destinationZipCode) => {
     try {
         const response = await frete({
             cepOrigem: sourceZipCode,
-            cepDestino: targetZipCode,
+            cepDestino: destinationZipCode,
             servico: frete.servicos.sedex,
             peso: 1,
             formato: frete.formatos.caixaPacote,
@@ -24,6 +24,6 @@ module.exports = async (sourceZipCode, targetZipCode) => {
             deliveryTime: Number(prop('prazoEntrega', response))
         }
     } catch (err) {
-        throw customError('Could not retrieve shipping price and delivery time')
+        throw customError('Could not retrieve shipping price and delivery time', 503)
     }
 }
