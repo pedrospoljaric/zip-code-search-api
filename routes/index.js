@@ -3,7 +3,6 @@ const { errorHandler, authorizationChecker, accessLogger } = require('./middlewa
 const addresses = require('./addresses')
 const authentication = require('./authentication')
 const docs = require('./docs')
-const shipping = require('./shipping')
 
 module.exports = new Router()
     .use(accessLogger)
@@ -12,5 +11,4 @@ module.exports = new Router()
     .use('/authentication', authentication)
     .use(authorizationChecker)
     .use('/addresses', addresses)
-    .use('/shipping', shipping)
     .routes()

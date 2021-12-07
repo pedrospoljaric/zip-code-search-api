@@ -11,9 +11,16 @@ components:
       scheme: bearer
       bearerFormat: JWT
 
+tags:
+- name: Health
+- name: Authentication
+- name: Addresses
+
 paths:
   /healthcheck:
     get:
+      tags:
+      - Health
       summary: Checks if the API is running.
       responses:
         '200':
@@ -35,6 +42,8 @@ paths:
                 example: Not Found
   /api/v1/authentication/authenticate:
     post:
+      tags:
+      - Authentication
       summary: Authenticates a user.
       description: Returns a JSON Web Token to be used as authorization.
       requestBody:
@@ -46,11 +55,11 @@ paths:
                 username:
                   type: string
                   required: true
-                  example: test
+                  example: UsuarioTeste
                 password:
                   type: string
                   required: true
-                  example: password
+                  example: P@ssw0rd
       responses:
         '200':
           description: OK
@@ -127,6 +136,8 @@ paths:
                         example: User not found
   /api/v1/addresses:
     get:
+      tags:
+      - Addresses
       security:
         - Bearer token: []
       summary: Returns an address object.
@@ -135,6 +146,7 @@ paths:
         - name: zipCode
           in: query
           required: true
+          example: 12210130
           schema:
             type: integer
       responses:
@@ -223,8 +235,10 @@ paths:
                       message:
                         type: string
                         example: Address of zip code 12210144 not found
-  /api/v1/shipping:
+  /api/v1/addresses/shipping:
     get:
+      tags:
+      - Addresses
       security:
         - Bearer token: []
       summary: Returns shipping details object.

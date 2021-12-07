@@ -11,7 +11,7 @@ jest.doMock('../../../../services/correios/calculateShippingFeeAndDeliveryTIme',
     throw customError('Could not retrieve shipping price and delivery time', 503)
 })
 
-const getShippingDetails = require('../../../../domains/shipping/getShippingDetails')
+const getShippingDetails = require('../../../../domains/addresses/shipping/getShippingDetails')
 
 it('Should return shipping details if a valid destination zip code is provided', async () => {
     expect(await getShippingDetails({ zipCode: 12210130 })).toMatchObject({

@@ -1,6 +1,6 @@
 const { prop } = require('lodash/fp')
-const { calculateShippingFeeAndDeliveryTIme } = require('../../services/correios')
-const { customError } = require('../../utils')
+const { calculateShippingFeeAndDeliveryTIme } = require('../../../services/correios')
+const { customError } = require('../../../utils')
 
 module.exports = async ({ zipCode } = {}) => {
     if (!Number(zipCode)) throw customError('Invalid zip code', 400)

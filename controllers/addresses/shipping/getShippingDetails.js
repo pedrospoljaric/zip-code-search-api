@@ -1,5 +1,5 @@
 const { prop } = require('lodash/fp')
-const { getShippingDetails } = require('../../domains/shipping')
+const { getShippingDetails } = require('../../../domains/addresses/shipping')
 
 module.exports = (ctx) => getShippingDetails({
     zipCode: Number(prop('query.zipCode', ctx))
