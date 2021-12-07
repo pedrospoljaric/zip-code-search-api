@@ -247,6 +247,7 @@ paths:
         - name: zipCode
           in: query
           required: true
+          example: 12210130
           schema:
             type: integer
       responses:
