@@ -28,6 +28,8 @@ Com o Docker instalado, iniciar todos os containers usando o seguinte comando na
 docker-compose up -d
 ```
 
+Observação: O container da API pode demorar um pouco mais para ficar disponível depois de ter sido iniciado, devido à instalação de pacotes NPM.
+
 ## **Para executar os testes**
 ```sh
 docker-compose exec api npm test
@@ -43,7 +45,6 @@ As credenciais do usuário de exemplo inserido são:
 O endereço de CEP 12210130 também foi inserido como exemplo.\
 
 Observações:
-- O container "api" pode demorar um pouco mais para estar disponível depois de ter sido iniciado, devido à instalação de pacotes NPM
 - Todos os endpoints relacionados a endereços necessitam de autorização.
 - O endpoint de cálculo de preço e prazo de frete é uma simulação usando a API dos Correios com um endereço de origem fixo de São Paulo de CEP 7034911
 
