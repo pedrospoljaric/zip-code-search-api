@@ -41,7 +41,10 @@ As credenciais do usuário de exemplo inserido são:
   - password: P@ssw0rd
 
 O endereço de CEP 12210130 também foi inserido como exemplo.\
-Observação: Todos os endpoints relacionados a endereços necessitam de autorização.
+
+Observações:
+- O container "api" pode demorar um pouco mais para estar disponível depois de ter iniciado, devido à instalação de pacotes NPM
+- Todos os endpoints relacionados a endereços necessitam de autorização.
 
 ## **Para acompanhar os logs**
 ```sh
