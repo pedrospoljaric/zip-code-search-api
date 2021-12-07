@@ -42,7 +42,7 @@ As credenciais do usuário de exemplo inserido são:
   - username: UsuarioTeste
   - password: P@ssw0rd
 
-O endereço de CEP 12210130 também foi inserido como exemplo.\
+O endereço de CEP 12210130 também foi inserido como exemplo.
 
 Observações:
 - Todos os endpoints relacionados a endereços necessitam de autorização.
