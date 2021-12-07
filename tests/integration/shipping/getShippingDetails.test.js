@@ -41,7 +41,7 @@ afterAll(() => {
 })
 
 it('Should succeed and return shipping details if existing zip code is provided', async () => {
-    const response = await request.get('/api/v1/shipping?zipCode=12210130').set('authorization', `Bearer ${token}`)
+    const response = await request.get('/api/v1/addresses/shipping?zipCode=12210130').set('authorization', `Bearer ${token}`)
     expect(prop('body', response)).toMatchObject({
         success: true,
         data: {
@@ -54,7 +54,7 @@ it('Should succeed and return shipping details if existing zip code is provided'
 })
 
 it('Should fail and return error if non existing zip code is provided', async () => {
-    const response = await request.get('/api/v1/shipping?zipCode=12210144').set('authorization', `Bearer ${token}`)
+    const response = await request.get('/api/v1/addresses/shipping?zipCode=12210144').set('authorization', `Bearer ${token}`)
     expect(prop('body', response)).toMatchObject({
         success: false,
         error: {
@@ -65,7 +65,7 @@ it('Should fail and return error if non existing zip code is provided', async ()
 })
 
 it('Should fail and return error if no zip code is provided', async () => {
-    const response = await request.get('/api/v1/shipping').set('authorization', `Bearer ${token}`)
+    const response = await request.get('/api/v1/addresses/shipping').set('authorization', `Bearer ${token}`)
     expect(prop('body', response)).toMatchObject({
         success: false,
         error: {
@@ -76,7 +76,7 @@ it('Should fail and return error if no zip code is provided', async () => {
 })
 
 it('Should fail and return error if the zip code provided is not a number', async () => {
-    const response = await request.get('/api/v1/shipping?zipCode=xxx').set('authorization', `Bearer ${token}`)
+    const response = await request.get('/api/v1/addresses/shipping?zipCode=xxx').set('authorization', `Bearer ${token}`)
     expect(prop('body', response)).toMatchObject({
         success: false,
         error: {
